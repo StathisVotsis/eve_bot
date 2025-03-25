@@ -35,7 +35,7 @@
    <joint name="base_joint" type="fixed">
        <parent link="base_footprint"/>
        <child link="base_link"/>
-       <origin xyz="0 0 0.035" rpy="0 0 0"/>
+       <origin xyz="0 0 0.042" rpy="0 0 0"/>
    </joint>
 
    <link name="raspberry_link">
@@ -58,7 +58,7 @@
    <joint name="base_raspberry_joint" type="fixed">
       <parent link="base_link"/>
       <child link="raspberry_link"/>
-      <origin xyz="-0.10 0 0.07" rpy="0 0 0"/>
+      <origin xyz="-0.10 0 0.0525" rpy="0 0 0"/>
    </joint>
 
    <link name="right_wheel_link">
@@ -81,7 +81,7 @@
    <joint name="base_right_wheel_joint" type="continuous">
       <parent link="base_link"/>
       <child link="right_wheel_link"/>
-      <origin xyz="0 -0.115 0" rpy="0 0 0"/>
+      <origin xyz="0 -0.115 -0.009" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
    </joint>
 
@@ -105,31 +105,31 @@
    <joint name="base_left_wheel_joint" type="continuous">
       <parent link="base_link"/>
       <child link="left_wheel_link"/>
-      <origin xyz="0 0.115 0" rpy="0 0 0"/>
+      <origin xyz="0 0.115 -0.009" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
    </joint>
 
    <link name="caster_wheel_link">
       <visual>
          <geometry>
-           <sphere radius="0.017"/>
+           <sphere radius="0.033"/>
          </geometry>
          <origin xyz="0 0 0" rpy="0 0 0"/>
          <material name="gray"/>
       </visual>
       <collision>
          <geometry>
-           <sphere radius="0.017"/>
+           <sphere radius="0.033"/>
          </geometry>
          <origin xyz="0 0 0" rpy="0 0 0"/>
       </collision>
-      <xacro:sphere_inertia m="0.2" r="0.017" o_xyz="0 0 0" o_rpy="0 0 0" />
+      <xacro:sphere_inertia m="0.2" r="0.033" o_xyz="0 0 0" o_rpy="0 0 0" />
    </link>
 
    <joint name="base_caster_wheel_joint" type="fixed">
        <parent link="base_link"/>
        <child link="caster_wheel_link"/>
-       <origin xyz="0.085 0 -0.062" rpy="0 0 0"/>
+       <origin xyz="0.12 0 -0.009" rpy="0 0 0"/>
    </joint>
 
 </robot>
