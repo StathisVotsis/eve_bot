@@ -3,7 +3,7 @@
 
   <xacro:arg name="use_ros2_control" default="true" />
 
-  <!--<xacro:include filename="ros2_control.xacro" />-->
+  <xacro:include filename="ros2_control.xacro" />
   <xacro:include filename="robot.urdf.xacro" />
   <xacro:include filename="lidar.xacro" />
   
