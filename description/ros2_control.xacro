@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
       <ros2_control name="RealRobot" type="system">
             <hardware>
                 <plugin>diffdrive_arduino/DiffDriveArduinoHardware</plugin>
@@ -28,4 +29,5 @@
                 <state_interface name="position"/>
             </joint>
         </ros2_control>
+        
 </robot>
