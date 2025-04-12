@@ -28,6 +28,11 @@ def generate_launch_description():
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
 
+    laser = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','rplidar.launch.py'
+                )]))
+
     #joystick = IncludeLaunchDescription(
                 #PythonLaunchDescriptionSource([os.path.join(
                     #get_package_share_directory(package_name),'launch','joystick.launch.py'
@@ -108,6 +113,7 @@ def generate_launch_description():
     return LaunchDescription([
         rsp,
         #joystick,
+        laser,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
