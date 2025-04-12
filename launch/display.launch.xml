@@ -2,7 +2,7 @@
     <let name="urdf_path"
          value="$(find-pkg-share eve_bot)/description/complete.xacro" />
     <let name="rviz_config_path"
-         value="$(find-pkg-share eve_bot)/config/main.rviz" />
+         value="$(find-pkg-share eve_bot)/config/map.rviz" />
 
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param name="robot_description"
