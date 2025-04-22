@@ -106,7 +106,10 @@ def generate_launch_description():
     # )
     #
     # Replace the diff_drive_spawner in the final return with delayed_diff_drive_spawner
-
+    imu_driver_node = Node(
+        package="eve_bot",
+        executable="mpu6050_driver.py"
+    )
 
 
     # Launch them all!
@@ -117,5 +120,6 @@ def generate_launch_description():
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner
+        delayed_joint_broad_spawner,
+        imu_driver_node
     ])

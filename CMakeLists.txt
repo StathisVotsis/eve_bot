@@ -24,8 +24,13 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY description launch config
+  DIRECTORY description launch config drivers
   DESTINATION share/${PROJECT_NAME}
 )
+
+#install(PROGRAMS
+  #${PROJECT_NAME}/mpu6050_driver.py
+  #DESTINATION lib/${PROJECT_NAME}
+#)
 
 ament_package()
