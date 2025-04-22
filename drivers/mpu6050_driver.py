@@ -1,4 +1,4 @@
-#!/home/stathis/.local/lib/python3.10/site-packages
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu
