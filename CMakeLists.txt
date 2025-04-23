@@ -24,12 +24,13 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY description launch config drivers
+  DIRECTORY description launch config
   DESTINATION share/${PROJECT_NAME}
 )
 
 install(PROGRAMS
   drivers/mpu6050_driver.py
+  #${PROJECT_NAME}/mpu6050_driver.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
