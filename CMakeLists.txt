@@ -28,10 +28,10 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
-install(PROGRAMS
-  drivers/mpu6050_driver.py
+#install(PROGRAMS
+  #drivers/mpu6050_driver.py
   #${PROJECT_NAME}/mpu6050_driver.py
-  DESTINATION lib/${PROJECT_NAME}
-)
+  #DESTINATION lib/${PROJECT_NAME}
+#)
 
 ament_package()
