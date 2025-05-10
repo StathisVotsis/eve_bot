@@ -4,8 +4,10 @@
   <xacro:arg name="sim_mode" default="false" />
   
   <xacro:include filename="robot.urdf.xacro" />
-  <xacro:include filename="ros2_control.xacro" />
-  
   <xacro:include filename="lidar.xacro" />
+  <xacro:include filename="upbody.xacro" />
+  <xacro:include filename="ros2_control.xacro" />
+  <xacro:include filename="camera.xacro" />
+  
   
 </robot>
