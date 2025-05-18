@@ -12,8 +12,6 @@ from launch.event_handlers import OnProcessStart
 
 from launch_ros.actions import Node
 
-from nano_firmware.nano_firmware import serial_tx_rx
-
 
 
 def generate_launch_description():
@@ -30,6 +28,11 @@ def generate_launch_description():
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
 
+    siren = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','serial_tx_rx.launch.py'
+                )]))
+
     laser = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rplidar.launch.py'
@@ -42,6 +45,7 @@ def generate_launch_description():
      #)
 
 
+
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
     twist_mux = Node(
             package="twist_mux",
@@ -49,12 +53,6 @@ def generate_launch_description():
             parameters=[twist_mux_params],
             remappings=[('/cmd_vel_out','/diff_cont/cmd_vel_unstamped')]
         )
-
-    siren = Node(
-        package="nano_firmware",
-        executable="serial_tx_rx",
-    )
-
 
     robot_description = Command(['ros2 param get --hide-type /robot_state_publisher robot_description'])
 

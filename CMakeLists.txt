@@ -11,6 +11,7 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -27,11 +28,5 @@ install(
   DIRECTORY description launch config
   DESTINATION share/${PROJECT_NAME}
 )
-
-#install(PROGRAMS
-  #drivers/mpu6050_driver.py
-  #${PROJECT_NAME}/mpu6050_driver.py
-  #DESTINATION lib/${PROJECT_NAME}
-#)
 
 ament_package()
