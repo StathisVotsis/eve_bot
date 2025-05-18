@@ -12,6 +12,8 @@ from launch.event_handlers import OnProcessStart
 
 from launch_ros.actions import Node
 
+from nano_firmware.nano_firmware import serial_tx_rx
+
 
 
 def generate_launch_description():
@@ -27,6 +29,11 @@ def generate_launch_description():
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
+
+    siren = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('nano_firmware'),'nano_firmware','serial_tx_rx.py'
+                )]))
 
     laser = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -110,6 +117,7 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
+        siren,
         #joystick,
         laser,
         twist_mux,
