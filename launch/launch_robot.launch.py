@@ -32,6 +32,10 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','serial_tx_rx.launch.py'
                 )]))
+    siren_sound = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','sound_alert.launch.py'
+                )]))
 
     laser = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -114,6 +118,7 @@ def generate_launch_description():
     return LaunchDescription([
         rsp,
         siren,
+        siren_sound,
         #joystick,
         laser,
         twist_mux,
