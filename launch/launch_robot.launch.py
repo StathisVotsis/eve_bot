@@ -10,6 +10,9 @@ from launch.substitutions import Command
 from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessStart
 
+from launch.actions import ExecuteProcess
+from launch.substitutions import FindExecutable
+
 from launch_ros.actions import Node
 
 
@@ -113,6 +116,20 @@ def generate_launch_description():
     # )
     #
     # Replace the diff_drive_spawner in the final return with delayed_diff_drive_spawner
+    
+    #stop laser spining on launch
+    laser_stop = ExecuteProcess(
+        cmd=[
+            [
+                FindExecutable(name="ros2"),
+                " service call ",
+                "/stop_motor ",
+                "std_srvs/srv/Empty ",
+                "{}",
+            ]
+        ],
+        shell=True,
+    )
 
     # Launch them all!
     return LaunchDescription([
@@ -124,5 +141,6 @@ def generate_launch_description():
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner
+        delayed_joint_broad_spawner,
+        laser_stop
     ])
