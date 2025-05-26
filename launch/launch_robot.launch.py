@@ -35,10 +35,10 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','serial_tx_rx.launch.py'
                 )]))
-    siren_sound = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','sound_alert.launch.py'
-                )]))
+    #siren_sound = IncludeLaunchDescription(
+                #PythonLaunchDescriptionSource([os.path.join(
+                    #get_package_share_directory(package_name),'launch','sound_alert.launch.py'
+                #)]))
 
     laser = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -48,8 +48,14 @@ def generate_launch_description():
     #joystick = IncludeLaunchDescription(
                 #PythonLaunchDescriptionSource([os.path.join(
                     #get_package_share_directory(package_name),'launch','joystick.launch.py'
-                #)])
-     #)
+                #)]))
+
+    cam = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','camera.launch.py'
+                )]))
+
+     
 
 
 
@@ -135,9 +141,10 @@ def generate_launch_description():
     return LaunchDescription([
         rsp,
         siren,
-        siren_sound,
+        #siren_sound,
         #joystick,
         laser,
+        cam,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
