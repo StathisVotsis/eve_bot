@@ -31,10 +31,6 @@ def generate_launch_description():
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
 
-    siren = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','serial_tx_rx.launch.py'
-                )]))
     #siren_sound = IncludeLaunchDescription(
                 #PythonLaunchDescriptionSource([os.path.join(
                     #get_package_share_directory(package_name),'launch','sound_alert.launch.py'
@@ -55,7 +51,15 @@ def generate_launch_description():
                     get_package_share_directory(package_name),'launch','camera.launch.py'
                 )]))
 
-     
+    ina260 = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','ina260.launch.py'
+                )]))
+    
+    relay = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','relay.launch.py'
+                )]))
 
 
 
@@ -140,11 +144,12 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
-        siren,
         #siren_sound,
         #joystick,
         laser,
         cam,
+        ina260,
+        relay,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,

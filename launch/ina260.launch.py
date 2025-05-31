@@ -7,8 +7,8 @@ def generate_launch_description():
     return LaunchDescription([
 
         Node(
-            package='nano_firmware',
-            executable='serial_tx_rx.py',
+            package='ina260',
+            executable='ina260.py',
             output='screen',
             arguments=[]),
     ])
