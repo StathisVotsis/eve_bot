@@ -46,10 +46,10 @@ def generate_launch_description():
                     #get_package_share_directory(package_name),'launch','joystick.launch.py'
                 #)]))
 
-    cam = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','camera.launch.py'
-                )]))
+    #cam = IncludeLaunchDescription(
+                #PythonLaunchDescriptionSource([os.path.join(
+                    #get_package_share_directory(package_name),'launch','camera.launch.py'
+                #)]))
 
     ina260 = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -147,7 +147,7 @@ def generate_launch_description():
         #siren_sound,
         #joystick,
         laser,
-        cam,
+        #cam,
         ina260,
         relay,
         twist_mux,
