@@ -16,13 +16,6 @@
 
  <link name="base_footprint"/>
 
- <!-- Base link -->
- <joint name="base_link_joint" type="fixed">
-   <parent link="base_footprint"/>
-   <child link="base_link"/>
-   <origin xyz="0 0 0.087" rpy="0 0 0"/>
-</joint>
-
 <link name="base_link">
    <visual>
      <geometry>
@@ -39,6 +32,13 @@
    </collision>
    <xacro:cylinder_inertia m="4" r="0.17" l="0.14" o_xyz="0 0 0" o_rpy="0 0 0" />
 </link>
+
+<!-- Base link -->
+ <joint name="base_link_joint" type="fixed">
+   <parent link="base_footprint"/>
+   <child link="base_link"/>
+   <origin xyz="0 0 0.087" rpy="0 0 0"/>
+</joint>
 
 <link name="caster_wheel">
    <visual>
@@ -63,6 +63,22 @@
     <origin xyz="0.12 0 -0.054" rpy="0 0 0"/>
 </joint>
 
+<link name="left_wheel">
+  <visual>
+      <geometry>
+          <cylinder radius="0.033" length="0.015"/>
+      </geometry>
+      <material name="gray"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+  </visual>
+  <collision>
+    <geometry>
+        <cylinder radius="0.033" length="0.015"/>
+    </geometry>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+</collision>
+<xacro:cylinder_inertia m="1" r="0.033" l="0.015" o_xyz="0 0 0" o_rpy="0 0 0" />
+</link>
 
 <joint name="left_wheel_joint" type="continuous">
   <parent link="base_link"/>
@@ -71,7 +87,7 @@
   <axis xyz="0 0 -1"/>
 </joint>
 
-<link name="left_wheel">
+<link name="right_wheel">
   <visual>
       <geometry>
           <cylinder radius="0.033" length="0.015"/>
@@ -94,22 +110,5 @@
   <origin xyz="0 -0.115 -0.054" rpy="1.57 0 0" />
   <axis xyz="0 0 -1"/>
 </joint>
-
-<link name="right_wheel">
-  <visual>
-      <geometry>
-          <cylinder radius="0.033" length="0.015"/>
-      </geometry>
-      <material name="gray"/>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-  </visual>
-  <collision>
-    <geometry>
-        <cylinder radius="0.033" length="0.015"/>
-    </geometry>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-</collision>
-<xacro:cylinder_inertia m="1" r="0.033" l="0.015" o_xyz="0 0 0" o_rpy="0 0 0" />
-</link>
 
 </robot>
