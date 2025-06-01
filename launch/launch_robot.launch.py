@@ -68,8 +68,22 @@ def generate_launch_description():
             package="twist_mux",
             executable="twist_mux",
             parameters=[twist_mux_params],
-            remappings=[('/cmd_vel_out','/diff_cont/cmd_vel_unstamped')]
-        )
+    )
+
+    #stop laser spining on launch
+    laser_stop = ExecuteProcess(
+        cmd=[
+            [
+                FindExecutable(name="ros2"),
+                " service call ",
+                "/stop_motor ",
+                "std_srvs/srv/Empty ",
+                "{}",
+            ]
+        ],
+        shell=True,
+    )
+
 
     robot_description = Command(['ros2 param get --hide-type /robot_state_publisher robot_description'])
 
@@ -127,20 +141,7 @@ def generate_launch_description():
     #
     # Replace the diff_drive_spawner in the final return with delayed_diff_drive_spawner
     
-    #stop laser spining on launch
-    laser_stop = ExecuteProcess(
-        cmd=[
-            [
-                FindExecutable(name="ros2"),
-                " service call ",
-                "/stop_motor ",
-                "std_srvs/srv/Empty ",
-                "{}",
-            ]
-        ],
-        shell=True,
-    )
-
+    
     # Launch them all!
     return LaunchDescription([
         rsp,
@@ -150,9 +151,9 @@ def generate_launch_description():
         #cam,
         ina260,
         relay,
+        laser_stop,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner,
-        laser_stop
+        delayed_joint_broad_spawner
     ])
