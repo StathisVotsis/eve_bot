@@ -30,8 +30,7 @@ def generate_launch_description():
         output='screen',
         parameters=[params]
     )
-
-
+    
     # Launch!
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -44,4 +43,5 @@ def generate_launch_description():
             description='Use ros2_control if true'),
 
         node_robot_state_publisher
+       
     ])
